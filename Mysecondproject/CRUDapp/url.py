@@ -3,11 +3,11 @@ from CRUDapp import views
 
 
 urlpatterns=[
-    path('get/',views.Getemployees,name='get'),
-    path('register/',views.Addemployees,name='register'),
-    path('delete/<id>',views.Deleteemployee,name='delete'),
+    path('crudget/',views.Getemployees,name='crudget'),
+    path('crudregister/',views.Addemployees,name='crudregister'),
+    path('deletecrud/<id>',views.Deleteemployee,name='deletecrud'),
     path('update/<id>',views.Updateemployee,name='update'),
     path('search/',views.Searchemployee,name='search'),
-    path('login/',views.loginuser,name='login'),
-    path('logout/',views.logoutuser,name='logout')
+    path('logincrud/',views.loginuser,name='logincrud'),
+    path('logoutcrud/',views.logoutuser,name='logoutcrud')
 ]

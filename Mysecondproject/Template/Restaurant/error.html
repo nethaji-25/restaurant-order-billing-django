@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Action Not Allowed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+    <div class="bg-white shadow-lg rounded-lg p-8 max-w-md text-center">
+        <div class="text-red-500 text-5xl mb-4">
+            🚫
+        </div>
+
+        <h1 class="text-2xl font-bold text-gray-800 mb-2">
+            Table is Closed
+        </h1>
+
+        <p class="text-gray-600 mb-6">
+            You cannot create a new order for this table at the moment.
+        </p>
+
+        <a href="{% url 'table_dashboard' %}"
+           class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-semibold transition">
+            Back to Dashboard
+        </a>
+    </div>
+
+</body>
+</html>

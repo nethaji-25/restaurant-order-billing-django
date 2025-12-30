@@ -48,7 +48,11 @@ INSTALLED_APPS = [
     'Practice',
     'ITSupport',
     'Testapp',
-    'Mohanapp'
+    'Mohanapp',
+    'TCSapp',
+    'Shifttask.apps.ShifttaskConfig',
+    'VEapp',
+    'restaurant'
 
 ]
 

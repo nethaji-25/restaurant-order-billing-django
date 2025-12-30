@@ -10,7 +10,7 @@ def Nethaji(request):
     return HttpResponse(a)
 
 def Webpage(request):
-    name="Nithya"
+    name="Nethaji"
     return render(request,template_name="first/Homepage.html",context={"name":name})
 
 

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bill Summary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+    <div class="bg-white shadow-lg rounded-lg w-full max-w-md p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">
+            Bill Summary
+        </h2>
+
+        <div class="space-y-3 text-gray-700">
+            <div class="flex justify-between">
+                <span class="font-medium">Table Number</span>
+                <span>{{ bill.order.table.table_number }}</span>
+            </div>
+
+            <div class="flex justify-between">
+                <span class="font-medium">Total Amount</span>
+                <span>₹ {{ bill.total_amount }}</span>
+            </div>
+
+            <div class="flex justify-between">
+                <span class="font-medium">Tax</span>
+                <span>₹ {{ bill.tax_amount }}</span>
+            </div>
+
+            <div class="flex justify-between">
+                <span class="font-medium">Status</span>
+                <span
+                    class="
+                        px-2 py-1 rounded text-sm font-semibold
+                        {% if bill.status == 'PAID' %}
+                            bg-green-100 text-green-700
+                        {% else %}
+                            bg-yellow-100 text-yellow-700
+                        {% endif %}
+                    "
+                >
+                    {{ bill.status }}
+                </span>
+            </div>
+        </div>
+
+        <div class="mt-6 text-center">
+            {% if bill.status != 'PAID' %}
+                <a href="{% url 'mark_bill_paid' bill.id %}"
+                   class="inline-block bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md font-semibold transition">
+                    Mark as Paid
+                </a>
+            <a href="{% url 'export_bill_pdf' bill.id %}"
+   class="inline-block mt-4 bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-md">
+    📄 Download Bill as PDF
+</a>
+
+            {% else %}
+                <p class="text-green-600 font-semibold">
+                    Bill already paid
+                </p>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>

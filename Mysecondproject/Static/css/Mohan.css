@@ -5,7 +5,6 @@
   --accent: #0066cc;
   --accent-2: #00a991;
   --card-bg: rgba(255,255,255,0.8);
-  --glass: rgba(255,255,255,0.6);
   --radius: 12px;
   --max-width: 1100px;
   --gap: 1.25rem;
@@ -19,13 +18,11 @@
   --text: #e6eef8;
   --muted: #b7c6d8;
   --card-bg: rgba(6,14,23,0.6);
-  --glass: rgba(12,20,30,0.6);
   --accent: #4fc3f7;
   --shadow: 0 8px 28px rgba(2,6,23,0.6);
 }
 
 * { box-sizing: border-box; }
-html,body { height:100%; }
 
 body{
   margin: 0;
@@ -70,7 +67,6 @@ body{
   gap:0.5rem;
   padding:0.6rem 1rem;
   border-radius:10px;
-  border: none;
   text-decoration:none;
   cursor:pointer;
   font-weight:600;
@@ -78,7 +74,19 @@ body{
   color:var(--text);
   transition: transform var(--transition), box-shadow var(--transition);
 }
-.btn:focus{ outline:3px solid color-mix(in srgb, var(--accent) 40%, transparent); outline-offset:2px; }
+
+
+.btn:focus{
+  outline: 3px solid rgba(0, 102, 204, 0.18); /* fallback */
+  outline-offset: 2px;
+}
+
+
+@supports (color: color-mix(in srgb, var(--accent) 40%, transparent)) {
+  .btn:focus {
+    outline:3px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+}
 
 .btn--primary{
   background: linear-gradient(90deg,var(--accent), var(--accent-2));
@@ -86,7 +94,7 @@ body{
   box-shadow: 0 8px 28px rgba(0,120,220,0.12);
 }
 
-/* explicit outline variant used in template */
+
 .btn--outline{
   background: transparent;
   border: 1px solid rgba(15,23,42,0.08);
@@ -111,8 +119,7 @@ body{
   border-radius:var(--radius);
   padding:1rem;
   box-shadow:var(--shadow);
-  transform-origin:center;
-  transition: transform var(--transition), box-shadow var(--transition);
+
 }
 .card h3{ margin:0 0 0.35rem; }
 .card p{ margin:0; color:var(--muted); }
@@ -127,6 +134,8 @@ body{
 /* Utility */
 .muted{ color:var(--muted); }
 .cta-row{ display:flex; gap:0.75rem; margin-top:0.8rem; }
+
+.contact-actions { display:flex; gap:0.75rem; align-items:center; }
 
 /* Responsive */
 @media (max-width: 980px){

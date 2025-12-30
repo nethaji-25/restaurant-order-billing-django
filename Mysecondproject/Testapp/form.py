@@ -10,6 +10,7 @@ class Userform(forms.ModelForm):
         fields="__all__"
 
 
+
 class Registerform(UserCreationForm):
     class Meta:
         model=User

@@ -31,12 +31,12 @@
         <td>{{i.Empname}}</td>
         <td>{{i.Empid}}</td>
         <td>{{i.Empcity}}</td>
-        <td><a href="{% url 'delete' i.id %}">Delete</a></td>
+        <td><a href="{% url 'deletecrud' i.id %}">Delete</a></td>
         <td><a href="{% url 'update' i.id %}">Update</a></td>
     </tr>
     {% endfor %}
 </table><br><br>
-<a href="{% url 'register'%}">Add Employee</a>
+<a href="{% url 'crudregister'%}">Add Employee</a>
 
 </body>
 </html>

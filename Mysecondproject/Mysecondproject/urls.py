@@ -34,6 +34,7 @@ urlpatterns = [
     path('practice/',include('Practice.url')),
     path('IT/',include('ITSupport.url')),
     path('Test/',include('Testapp.url')),
-    path('Mohan/',include('Mohanapp.url'))
-
+    path('Mohan/',include('Mohanapp.url')),
+    path('API/',include('VEapp.url')),
+    path('restau/',include('restaurant.url'))
 ]

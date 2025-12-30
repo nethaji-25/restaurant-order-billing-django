@@ -11,7 +11,7 @@ from django.db.models import Q
 
 # Create your views here.
 
-@login_required(login_url='login')
+@login_required(login_url='logincrud')
 def Getemployees(request):
     e=Employeedetails.objects.all()
     return render(request,template_name="CRUD/empdetails.html",context={"e":e})
@@ -22,14 +22,14 @@ def Addemployees(request):
         e=Employeeform(request.POST)
         if e.is_valid():
             e.save()
-            return redirect("get")
+            return redirect("crudget")
 
     return render(request,template_name="CRUD/Register.html",context={"form":form})
 
 def Deleteemployee(request,id):
     e=Employeedetails.objects.get(id=id)
     e.delete()
-    return redirect("get")
+    return redirect("crudget")
 
 def Updateemployee(request,id):
     e=Employeedetails.objects.get(id=id)
@@ -37,7 +37,7 @@ def Updateemployee(request,id):
         a=Employeeform(request.POST,instance=e)
         if a.is_valid():
             a.save()
-            return redirect('get')
+            return redirect('crudget')
     return render(request,template_name="CRUD/update.html",context={"e":e})
 
 
@@ -55,7 +55,7 @@ def Searchemployee(request):
 
 def loginuser(request):
     if request.user.is_authenticated:
-        return redirect('get')
+        return redirect('crudget')
     if request.method=="POST":
         usr=request.POST.get("loginid")
         passi=request.POST.get("password")
@@ -63,7 +63,7 @@ def loginuser(request):
         a=authenticate(request,username=usr,password=passi)
         if a is not None:
             login(request,a)
-            return redirect('get')
+            return redirect('crudget')
         else:
             messages.error(request,"Invalid username or password")
 
@@ -71,5 +71,5 @@ def loginuser(request):
 
 def logoutuser(request):
     logout(request)
-    return redirect('login')
+    return redirect('logincrud')
 

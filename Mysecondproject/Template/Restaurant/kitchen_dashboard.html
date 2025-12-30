@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kitchen Notifications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+    <div class="bg-white shadow-lg rounded-lg w-full max-w-2xl p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+            🍽️ Kitchen Notifications
+        </h2>
+
+        {% if notifications %}
+            <ul class="space-y-4">
+                {% for note in notifications %}
+                    <li class="border rounded-lg p-4 flex justify-between items-center bg-gray-50">
+                        <div>
+                            <p class="text-gray-800 font-medium">
+                                {{ note.message }}
+                            </p>
+                            <p class="text-sm text-gray-500">
+                                {{ note.created_at }}
+                            </p>
+                        </div>
+
+                        <a href="{% url 'mark_notification_read' note.id %}"
+                           class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-semibold transition">
+                            Mark as read
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div class="text-center text-gray-600">
+                <p class="text-lg">✅ No new orders</p>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
